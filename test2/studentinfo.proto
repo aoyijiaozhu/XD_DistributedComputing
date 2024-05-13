@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package studentinfo;
+
+service StudentInfo {
+  rpc Add (StudentRequest) returns (StudentResponse) {}
+  rpc QueryByID (StudentByIDRequest) returns (StudentRequest) {}
+  rpc QueryByName (StudentByNameRequest) returns (StudentsResponse) {}
+  rpc Delete (StudentByIDRequest) returns (StudentResponse) {}
+}
+
+message StudentRequest {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+  string class_ = 4;
+}
+
+message StudentByIDRequest {
+  string id = 1;
+}
+
+message StudentByNameRequest {
+  string name = 1;
+}
+
+message StudentResponse {
+  string message = 1;
+}
+
+message StudentsResponse {
+  repeated StudentRequest students = 1;
+}
